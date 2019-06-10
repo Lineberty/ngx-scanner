@@ -294,6 +294,9 @@ export class BrowserCodeReader {
 
             // then forgets about that element 😢
 
+            // Clear the stream
+            (<any>this.videoElement.srcObject).getTracks()[0].stop();
+
             this.videoElement.srcObject = undefined;
             this.videoElement.removeAttribute('src');
             this.videoElement = undefined;
