@@ -153,7 +153,10 @@ export class BrowserCodeReader {
      * @param callbackFn
      */
     private decodeWithDelay(callbackFn: (result: Result) => any): void {
-        this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
+        if (this.videoElement || this.imageElement) {
+            this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
+        }
+
     }
 
     /**

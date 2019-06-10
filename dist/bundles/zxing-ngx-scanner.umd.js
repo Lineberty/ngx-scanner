@@ -98,7 +98,9 @@ var BrowserCodeReader = /** @class */ (function () {
         }
     };
     BrowserCodeReader.prototype.decodeWithDelay = function (callbackFn) {
-        this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
+        if (this.videoElement || this.imageElement) {
+            this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
+        }
     };
     BrowserCodeReader.prototype.decode = function (callbackFn, retryIfNotFound, retryIfChecksumOrFormatError, once) {
         var _this = this;

@@ -97,7 +97,9 @@ class BrowserCodeReader {
      * @return {?}
      */
     decodeWithDelay(callbackFn) {
-        this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
+        if (this.videoElement || this.imageElement) {
+            this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
+        }
     }
     /**
      * Does the real image decoding job.
