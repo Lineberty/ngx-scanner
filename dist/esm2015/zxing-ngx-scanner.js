@@ -46,6 +46,7 @@ class BrowserCodeReader {
             .catch((err) => {
             /* handle the error, or not */
             console.error(err);
+            this.stop();
         });
     }
     /**

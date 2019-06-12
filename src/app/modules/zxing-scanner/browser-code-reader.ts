@@ -98,6 +98,7 @@ export class BrowserCodeReader {
             .catch((err: any) => {
                 /* handle the error, or not */
                 console.error(err);
+                this.stop();
             });
     }
 

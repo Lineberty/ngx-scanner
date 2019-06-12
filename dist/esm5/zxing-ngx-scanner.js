@@ -27,6 +27,7 @@ var BrowserCodeReader = /** @class */ (function () {
             .then(function (stream) { return _this.startDecodeFromStream(stream, callbackFn); })
             .catch(function (err) {
             console.error(err);
+            _this.stop();
         });
     };
     BrowserCodeReader.prototype.startDecodeFromStream = function (stream, callbackFn) {
