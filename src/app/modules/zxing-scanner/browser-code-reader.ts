@@ -124,7 +124,7 @@ export class BrowserCodeReader {
             this.decodeWithDelay(callbackFn);
         };
 
-        this.videoElement.addEventListener('playing', this.videoPlayingEventListener);
+        this.videoElement.addEventListener('play', this.videoPlayingEventListener);
 
         this.videoLoadedMetadataEventListener = () => {
             this.videoElement.play();
@@ -288,7 +288,7 @@ export class BrowserCodeReader {
             }
 
             if (undefined !== this.videoPlayingEventListener) {
-                this.videoElement.removeEventListener('playing', this.videoPlayingEventListener);
+                this.videoElement.removeEventListener('play', this.videoPlayingEventListener);
             }
 
             if (undefined !== this.videoLoadedMetadataEventListener) {
