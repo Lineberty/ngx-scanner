@@ -114,7 +114,7 @@ export class BrowserCodeReader {
         // Older browsers may not have srcObject
         if ('srcObject' in this.videoElement) {
             // @NOTE Throws Exception if interrupted by a new loaded request
-            this.videoElement.srcObject = stream;
+            this.videoElement.srcObject = this.stream;
         } else {
             // @NOTE Avoid using this in new browsers, as it is going away.
             (<HTMLVideoElement>this.videoElement).src = window.URL.createObjectURL(stream);
