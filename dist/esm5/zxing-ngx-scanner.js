@@ -138,8 +138,7 @@ var BrowserCodeReader = /** @class */ (function () {
             if (undefined !== this.videoLoadedMetadataEventListener) {
                 this.videoElement.removeEventListener('loadedmetadata', this.videoLoadedMetadataEventListener);
             }
-            if (this.videoElement.srcObject)
-                ((this.videoElement.srcObject)).getTracks()[0].stop();
+            ((this.videoElement.srcObject)).getTracks()[0].stop();
             this.videoElement.srcObject = undefined;
             this.videoElement.removeAttribute('src');
             this.videoElement = undefined;

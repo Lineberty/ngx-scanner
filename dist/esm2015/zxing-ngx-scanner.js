@@ -204,8 +204,7 @@ class BrowserCodeReader {
             }
             // then forgets about that element 😢
             // Clear the stream
-            if (this.videoElement.srcObject)
-                (/** @type {?} */ (this.videoElement.srcObject)).getTracks()[0].stop();
+            (/** @type {?} */ (this.videoElement.srcObject)).getTracks()[0].stop();
             this.videoElement.srcObject = undefined;
             this.videoElement.removeAttribute('src');
             this.videoElement = undefined;
