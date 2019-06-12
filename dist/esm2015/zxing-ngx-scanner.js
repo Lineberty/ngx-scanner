@@ -98,7 +98,6 @@ class BrowserCodeReader {
      */
     decodeWithDelay(callbackFn) {
         if (this.videoElement || this.imageElement) {
-            alert('RUN');
             this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
         }
     }
@@ -121,9 +120,9 @@ class BrowserCodeReader {
         try {
             const /** @type {?} */ result = this.readerDecode(binaryBitmap);
             callbackFn(result);
-            if (!once && !!this.stream) {
-                setTimeout(() => this.decodeWithDelay(callbackFn), this.timeBetweenScans);
-            }
+            // if (!once && !!this.stream) {
+            //     setTimeout(() => this.decodeWithDelay(callbackFn), this.timeBetweenScans);
+            // }
         }
         catch (/** @type {?} */ re) {
             console.debug(retryIfChecksumOrFormatError, re);

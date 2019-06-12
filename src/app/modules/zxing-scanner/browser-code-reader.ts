@@ -154,7 +154,6 @@ export class BrowserCodeReader {
      */
     private decodeWithDelay(callbackFn: (result: Result) => any): void {
         if (this.videoElement || this.imageElement) {
-            alert('RUN')
             this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
         }
 
@@ -190,9 +189,9 @@ export class BrowserCodeReader {
 
             callbackFn(result);
 
-            if (!once && !!this.stream) {
-                setTimeout(() => this.decodeWithDelay(callbackFn), this.timeBetweenScans);
-            }
+            // if (!once && !!this.stream) {
+            //     setTimeout(() => this.decodeWithDelay(callbackFn), this.timeBetweenScans);
+            // }
 
         } catch (re) {
 

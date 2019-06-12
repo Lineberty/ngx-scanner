@@ -59,12 +59,10 @@ var BrowserCodeReader = /** @class */ (function () {
     };
     BrowserCodeReader.prototype.decodeWithDelay = function (callbackFn) {
         if (this.videoElement || this.imageElement) {
-            alert('RUN');
             this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
         }
     };
     BrowserCodeReader.prototype.decode = function (callbackFn, retryIfNotFound, retryIfChecksumOrFormatError, once) {
-        var _this = this;
         if (retryIfNotFound === void 0) { retryIfNotFound = true; }
         if (retryIfChecksumOrFormatError === void 0) { retryIfChecksumOrFormatError = true; }
         if (once === void 0) { once = false; }
@@ -77,9 +75,6 @@ var BrowserCodeReader = /** @class */ (function () {
         try {
             var result = this.readerDecode(binaryBitmap);
             callbackFn(result);
-            if (!once && !!this.stream) {
-                setTimeout(function () { return _this.decodeWithDelay(callbackFn); }, this.timeBetweenScans);
-            }
         }
         catch (re) {
             console.debug(retryIfChecksumOrFormatError, re);
