@@ -33,7 +33,7 @@ var BrowserCodeReader = /** @class */ (function () {
         var _this = this;
         this.stream = stream;
         if ('srcObject' in this.videoElement) {
-            this.videoElement.srcObject = stream;
+            this.videoElement.srcObject = this.stream;
         }
         else {
             ((this.videoElement)).src = window.URL.createObjectURL(stream);
@@ -41,7 +41,7 @@ var BrowserCodeReader = /** @class */ (function () {
         this.videoPlayingEventListener = function () {
             _this.decodeWithDelay(callbackFn);
         };
-        this.videoElement.addEventListener('playing', this.videoPlayingEventListener);
+        this.videoElement.addEventListener('play', this.videoPlayingEventListener);
         this.videoLoadedMetadataEventListener = function () {
             _this.videoElement.play();
         };
@@ -133,7 +133,7 @@ var BrowserCodeReader = /** @class */ (function () {
                 this.videoElement.removeEventListener('ended', this.videoPlayEndedEventListener);
             }
             if (undefined !== this.videoPlayingEventListener) {
-                this.videoElement.removeEventListener('playing', this.videoPlayingEventListener);
+                this.videoElement.removeEventListener('play', this.videoPlayingEventListener);
             }
             if (undefined !== this.videoLoadedMetadataEventListener) {
                 this.videoElement.removeEventListener('loadedmetadata', this.videoLoadedMetadataEventListener);

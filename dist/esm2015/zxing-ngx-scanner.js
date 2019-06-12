@@ -60,7 +60,7 @@ class BrowserCodeReader {
         // Older browsers may not have srcObject
         if ('srcObject' in this.videoElement) {
             // @NOTE Throws Exception if interrupted by a new loaded request
-            this.videoElement.srcObject = stream;
+            this.videoElement.srcObject = this.stream;
         }
         else {
             // @NOTE Avoid using this in new browsers, as it is going away.
@@ -69,7 +69,7 @@ class BrowserCodeReader {
         this.videoPlayingEventListener = () => {
             this.decodeWithDelay(callbackFn);
         };
-        this.videoElement.addEventListener('playing', this.videoPlayingEventListener);
+        this.videoElement.addEventListener('play', this.videoPlayingEventListener);
         this.videoLoadedMetadataEventListener = () => {
             this.videoElement.play();
         };
@@ -197,7 +197,7 @@ class BrowserCodeReader {
                 this.videoElement.removeEventListener('ended', this.videoPlayEndedEventListener);
             }
             if (undefined !== this.videoPlayingEventListener) {
-                this.videoElement.removeEventListener('playing', this.videoPlayingEventListener);
+                this.videoElement.removeEventListener('play', this.videoPlayingEventListener);
             }
             if (undefined !== this.videoLoadedMetadataEventListener) {
                 this.videoElement.removeEventListener('loadedmetadata', this.videoLoadedMetadataEventListener);
