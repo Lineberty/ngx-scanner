@@ -154,6 +154,7 @@ export class BrowserCodeReader {
      */
     private decodeWithDelay(callbackFn: (result: Result) => any): void {
         if (this.videoElement || this.imageElement) {
+            alert('RUN')
             this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
         }
 
@@ -298,7 +299,7 @@ export class BrowserCodeReader {
             // then forgets about that element 😢
 
             // Clear the stream
-            (<any>this.videoElement.srcObject).getTracks()[0].stop();
+            if (this.videoElement.srcObject) (<any>this.videoElement.srcObject).getTracks()[0].stop();
 
             this.videoElement.srcObject = undefined;
             this.videoElement.removeAttribute('src');

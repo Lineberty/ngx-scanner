@@ -98,6 +98,7 @@ class BrowserCodeReader {
      */
     decodeWithDelay(callbackFn) {
         if (this.videoElement || this.imageElement) {
+            alert('RUN');
             this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
         }
     }
@@ -204,7 +205,8 @@ class BrowserCodeReader {
             }
             // then forgets about that element 😢
             // Clear the stream
-            (/** @type {?} */ (this.videoElement.srcObject)).getTracks()[0].stop();
+            if (this.videoElement.srcObject)
+                (/** @type {?} */ (this.videoElement.srcObject)).getTracks()[0].stop();
             this.videoElement.srcObject = undefined;
             this.videoElement.removeAttribute('src');
             this.videoElement = undefined;

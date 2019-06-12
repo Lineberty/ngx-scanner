@@ -59,6 +59,7 @@ var BrowserCodeReader = /** @class */ (function () {
     };
     BrowserCodeReader.prototype.decodeWithDelay = function (callbackFn) {
         if (this.videoElement || this.imageElement) {
+            alert('RUN');
             this.timeoutHandler = window.setTimeout(this.decode.bind(this, callbackFn), this.timeBetweenScans);
         }
     };
@@ -138,7 +139,8 @@ var BrowserCodeReader = /** @class */ (function () {
             if (undefined !== this.videoLoadedMetadataEventListener) {
                 this.videoElement.removeEventListener('loadedmetadata', this.videoLoadedMetadataEventListener);
             }
-            ((this.videoElement.srcObject)).getTracks()[0].stop();
+            if (this.videoElement.srcObject)
+                ((this.videoElement.srcObject)).getTracks()[0].stop();
             this.videoElement.srcObject = undefined;
             this.videoElement.removeAttribute('src');
             this.videoElement = undefined;
