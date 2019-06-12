@@ -75,6 +75,9 @@ var BrowserCodeReader = /** @class */ (function () {
         try {
             var result = this.readerDecode(binaryBitmap);
             callbackFn(result);
+            if (!once && !!this.stream) {
+                this.decodeWithDelay(callbackFn);
+            }
         }
         catch (re) {
             console.debug(retryIfChecksumOrFormatError, re);

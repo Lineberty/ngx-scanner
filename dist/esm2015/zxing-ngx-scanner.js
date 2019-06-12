@@ -120,9 +120,9 @@ class BrowserCodeReader {
         try {
             const /** @type {?} */ result = this.readerDecode(binaryBitmap);
             callbackFn(result);
-            // if (!once && !!this.stream) {
-            //     setTimeout(() => this.decodeWithDelay(callbackFn), this.timeBetweenScans);
-            // }
+            if (!once && !!this.stream) {
+                this.decodeWithDelay(callbackFn);
+            }
         }
         catch (/** @type {?} */ re) {
             console.debug(retryIfChecksumOrFormatError, re);
